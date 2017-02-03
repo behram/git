@@ -61,9 +61,17 @@ class Git {
 	 * @param   string $source directory to source
 	 * @return  GitRepo
 	 */
-	public static function create($repoPath, $source = null) {
-		return GitRepo::create($repoPath, $source);
+	public static function init($repoPath, $source = null) {
+		return GitRepo::init($repoPath, $source);
 	}
+
+    /**
+     * @param $repoPath
+     * @return mixed
+     */
+    public static function addRemote($repoPath) {
+        return GitRepo::addRemote($repoPath);
+    }
 
 	/**
 	 * Open an existing git repository

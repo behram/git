@@ -26,7 +26,7 @@ class GitRepo
     protected $console;
 
     /**
-     * Create a new git repository
+     * Init a new git repository
      *
      * Accepts a creation path, and, optionally, a source path
      *
@@ -38,7 +38,7 @@ class GitRepo
      * @throws \Exception
      * @return GitRepo
      */
-    public static function create($repoPath, $source = null, $remoteSource = false, $reference = null, $commandString = "")
+    public static function init($repoPath, $source = null, $remoteSource = false, $reference = null, $commandString = "")
     {
         if (is_dir($repoPath) && file_exists($repoPath . "/.git") && is_dir($repoPath . "/.git")) {
             throw new GitException(sprintf('"%s" is already a git repository', $repoPath));
@@ -57,7 +57,7 @@ class GitRepo
                     $repo->cloneFrom($source, $commandString);
                 }
             } else {
-                $repo->run('create');
+                $repo->run('init');
             }
             return $repo;
         }
