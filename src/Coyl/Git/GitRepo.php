@@ -41,7 +41,7 @@ class GitRepo
     public static function init($repoPath, $source = null, $remoteSource = false, $reference = null, $commandString = "")
     {
         if (is_dir($repoPath) && file_exists($repoPath . "/.git") && is_dir($repoPath . "/.git")) {
-            throw new GitException(sprintf('"%s" is already a git repository', $repoPath));
+            return new self($repoPath, true, false);
         } else {
             $repo = new self($repoPath, true, false);
             if (is_string($source)) {
